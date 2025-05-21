@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="">
       <body> 
         <div className="bg-green-100 dark:bg-[#112211] dark:text-white min-h-[100dvh] grid grid-rows-[auto_1fr_auto]">
-          <header className="bg-green-200 dark:bg-[#223322]">
+          <header className="border-b-2 border-green-300 dark:border-green-700 rounded-b-xl bg-green-50 dark:bg-[#182818]">
             <div className="max-w-4xl mx-auto flex justify-between items-center">
               <h2 className="text-2xl text-green-950 dark:text-green-100 py-5">Tea Collection</h2>
               <nav>
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
                     <NavLink href="/about-us">About Us</NavLink>
                   </li>
                   <li>
-                    <NavLink href="/products">Collection</NavLink>
+                    <NavLink href="/collection">Collection</NavLink>
                   </li>
                 </ul>
               </nav>
