@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Footer from "../components/Footer"
+import NavLink from "../components/NavLink"
 
 import "../components/globals.css"
 
@@ -10,11 +11,26 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <div className="bg-gray-200 min-h-[100dvh] grid grid-rows-[auto_1fr_auto]">
-          <header>
-            <Link href="/">Home</Link> | <Link href="/about-us">About Us</Link>
+    <html lang="en" className="">
+      <body> 
+        <div className="bg-green-100 dark:bg-[#112211] dark:text-white min-h-[100dvh] grid grid-rows-[auto_1fr_auto]">
+          <header className="bg-green-200 dark:bg-[#223322]">
+            <div className="max-w-4xl mx-auto flex justify-between items-center">
+              <h2 className="text-2xl text-green-950 dark:text-green-100 py-5">Tea Collection</h2>
+              <nav>
+                <ul className="flex space-x-4 text-sm">
+                  <li>
+                    <NavLink href="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink href="/about-us">About Us</NavLink>
+                  </li>
+                  <li>
+                    <NavLink href="/products">Collection</NavLink>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </header>
           <main>{children}</main>
           <Footer />
