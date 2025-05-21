@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Footer from "../components/Footer"
 
-import "./globals.css"
+import "../components/globals.css"
 
 export const metadata = {
   title: 'Next.js',
