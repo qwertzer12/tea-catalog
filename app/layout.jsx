@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body> 
         <div className="bg-green-100 dark:bg-[#112211] dark:text-white min-h-[100dvh] grid grid-rows-[auto_1fr_auto]">
           <Header />
-          <main>{children}</main>
+          <main className="py-4 px-4 m-5">{children}</main>
           <Footer />
         </div>
         
