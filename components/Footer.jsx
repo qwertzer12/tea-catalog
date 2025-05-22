@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 
 export default function Footer() {
-  const [count, setCount] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -12,10 +11,6 @@ export default function Footer() {
       setDarkMode(true);
     }
   }, []);
-
-  function handleClick() {
-    setCount(prev => prev + 1);
-  }
 
   function toggleDarkMode() {
     const html = document.documentElement;
@@ -29,15 +24,25 @@ export default function Footer() {
   }
 
   return (
-    <div>
-      <p>&copy; Our Company</p>
-      <p>
-        You have clicked the following button {count} times.{" "}
-        <button onClick={handleClick}>Click Me</button>
-      </p>
-      <button onClick={toggleDarkMode}>
-        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      </button>
-    </div>
+    <button
+      onClick={toggleDarkMode}
+      style={{
+        position: "fixed",
+        right: "1rem",
+        bottom: "1rem",
+        padding: "0.5rem 1rem",
+        fontSize: "0.85rem",
+        borderRadius: "0.375rem",
+        background: darkMode ? "#166534" : "#bbf7d0",
+        color: darkMode ? "#bbf7d0" : "#166534",
+        border: "none",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+        cursor: "pointer",
+        zIndex: 1000,
+      }}
+      aria-label={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+    >
+      {darkMode ? "🫖 Light" : "🍵 Dark"}
+    </button>
   );
 }
