@@ -1,0 +1,10 @@
+services:
+  teacatalog:
+    image: teacatalog
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3005:3005
