@@ -1,0 +1,14 @@
+{
+  "workspaces": [
+    "Frontend",
+    "Backend"
+  ],
+  "scripts": {
+    "dev:Frontend": "npm run dev --workspace Frontend",
+    "dev:Backend": "npm run dev --workspace Backend",
+    "dev": "concurrently \"npm run dev:Frontend\" \"npm run dev:Backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
