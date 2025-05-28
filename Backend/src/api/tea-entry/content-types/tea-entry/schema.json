@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tea_entries",
+  "info": {
+    "singularName": "tea-entry",
+    "pluralName": "tea-entries",
+    "displayName": "Tea Entry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "teaName": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "teaName"
+    },
+    "tea_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tea-type.tea-type",
+      "inversedBy": "tea_entries"
+    },
+    "rating": {
+      "type": "decimal",
+      "default": -1
+    }
+  }
+}

@@ -22,15 +22,15 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "scheduler": "^0.26.0",
     "styled-components": "^6.0.0"
   },
+  "devDependencies": {},
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "252a9f9a-0873-4836-9be5-9499fef7c045",
-    "installId": "7f70710b58125853e3dc2fb7b8eccefc4f6380f0a665036e4fef55039740bac0"
+    "uuid": "6e14be77-7a11-402c-a834-e6befad9a52a",
+    "installId": "84019f8e019fab3b5103ac79ccd5d226039269b75973902ccb4dd22b32ed0f42"
   }
 }

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tea_types",
+  "info": {
+    "singularName": "tea-type",
+    "pluralName": "tea-types",
+    "displayName": "Tea Type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "categoryName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tea_entries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tea-entry.tea-entry",
+      "mappedBy": "tea_type"
+    },
+    "numberOfTeas": {
+      "required": false,
+      "default": -1,
+      "type": "integer"
+    },
+    "AverageScore": {
+      "type": "decimal",
+      "default": -1
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
