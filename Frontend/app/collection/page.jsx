@@ -7,18 +7,16 @@ export default function Page() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const url = process.env.BACKEND_ADDRESS + "tea-entries?populate=*";
-        const options = {
-            method: 'GET',
-            headers: {
-                authorization: process.env.API_TOKEN
-            }
-        };
+        const url = '/api/tea-entries';
 
         async function fetchTeaEntries() {
             try {
-                const response = await fetch(url, options);
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(response.statusText);
                 const data = await response.json();
+                if (data.error) {
+                    throw new Error(data.error);
+                }
                 setTeaEntries(data.data || []);
             } catch (err) {
                 setError('Failed to fetch tea entries.');
