@@ -8,14 +8,6 @@
 # Built Visual Studio Code Extensions
 *.vsix
 
-### Strapi template
-
-.env
-license.txt
-exports
-*.cache
-build
-.strapi-updater.json
 
 ############################
 # OS X

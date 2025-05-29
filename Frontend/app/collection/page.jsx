@@ -7,11 +7,11 @@ export default function Page() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const url = 'http://192.168.1.159:1337/api/tea-entries';
+        const url = process.env.BACKEND_ADDRESS + "tea-entries?populate=*";
         const options = {
             method: 'GET',
             headers: {
-                authorization: 'Bearer 26b4a8f688872c786ecaab47542910dacbec0d27da144f302d021f80bf7940c93d2686cf0066d9a29300dcb0bc4ee78b11a53e673664b5f378680c48a3caaa05945920420ca958fd741e7158104ed4b5081b643bcac67f979eacf17d729d614d13322b6fc4b75c6a53b6a1a85518b26bd77ac6dc222095072f38fc996f45d331'
+                authorization: process.env.API_TOKEN
             }
         };
 
