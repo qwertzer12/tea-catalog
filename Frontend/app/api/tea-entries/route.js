@@ -1,23 +1,22 @@
 import { NextResponse } from 'next/server';
+import axios from 'axios'; // Added import
 
 export async function GET() {
     const url = process.env.BACKEND_ADDRESS + 'tea-entries?populate=*';
     const options = {
-        method: 'GET',
         headers: {
             authorization: process.env.API_TOKEN
         }
     };
 
     try {
-        const response = await fetch(url, options);
-        if (!response.ok) {
-            return NextResponse.json({ error: response.statusText }, { status: response.status });
-        }
-        const data = await response.json();
+        const response = await axios.get(url, options);
+        const data = response.data;
         return NextResponse.json(data);
     } catch (err) {
         console.error('Error fetching tea entries:', err);
-        return NextResponse.json({ error: 'Failed to fetch tea entries' }, { status: 500 });
+        const status = err.response?.status || 500;
+        const message = err.response?.statusText || 'Failed to fetch tea entries';
+        return NextResponse.json({ error: message }, { status });
     }
 }

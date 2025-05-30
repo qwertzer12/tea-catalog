@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import axios from 'axios'; // Added import
 
 export default function Page() {
     const [teaEntries, setTeaEntries] = useState([]);
@@ -11,9 +12,8 @@ export default function Page() {
 
         async function fetchTeaEntries() {
             try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(response.statusText);
-                const data = await response.json();
+                const response = await axios.get(url);
+                const data = response.data;
                 if (data.error) {
                     throw new Error(data.error);
                 }
