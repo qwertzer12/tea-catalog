@@ -1,10 +1,24 @@
 import { NextResponse } from 'next/server';
-import axios from 'axios'; // Added import
+import axios from 'axios';
+import qs from 'qs';
 
-export async function GET() {
-    const url = process.env.BACKEND_ADDRESS + 'tea-entries';
+export async function GET(request) {
+    // Extract slug from query parameters
+    const { searchParams } = new URL(request.url);
+    const slug = searchParams.get('slug');
+    if (!slug) {
+        return NextResponse.json({ error: 'Missing slug parameter' }, { status: 400 });
+    }
+
+    const ourQuery = qs.stringify({
+        filters: {
+            slug: slug
+        }
+    });
+
+    const url = process.env.BACKEND_ADDRESS + `tea-entries?${ourQuery}`;
     const options = {
-        params: {populate: '*'},
+        params: { populate: '*' },
         headers: {
             authorization: process.env.API_TOKEN
         }

@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import axios from 'axios'; // Added import
+import axios from 'axios';
 
 export default function Page() {
     const [teaEntries, setTeaEntries] = useState([]);
@@ -38,7 +38,25 @@ export default function Page() {
                 {teaEntries.map((entry) => (
                     <div key={entry.id} className="border border-gray-300 p-4 rounded-lg shadow-sm">
                         <h2 className="text-lg font-semibold ">{entry.teaName}</h2>
-                        <p className="dark:text-green-200">{entry.description[0]?.children[0]?.text || 'No description available'}</p>
+                        <div className="dark:text-green-200">
+                            {Array.isArray(entry.description)
+                                ? (() => {
+                                    const firstParagraph = entry.description.find(desc => desc.type === "paragraph");
+                                    if (!firstParagraph) return 'No description available';
+                                    // Concatenate all child texts in the first paragraph
+                                    const fullText = firstParagraph.children.map(child => child?.text || '').join(' ');
+                                    const words = fullText.trim().split(/\s+/);
+                                    const maxWords = 10;
+                                    const preview = words.slice(0, maxWords).join(' ');
+                                    return (
+                                        <div className="mb-3">
+                                            {preview}
+                                            {words.length > maxWords ? '...' : ''}
+                                        </div>
+                                    );
+                                })()
+                                : 'No description available'}
+                        </div>
                         <p className="mt-2 font-medium">
                             <strong>Rating:</strong> {entry.rating}
                         </p>
